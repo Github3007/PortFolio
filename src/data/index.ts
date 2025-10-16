@@ -1,7 +1,7 @@
 import { PersonalInfo, Project, Skill, Experience } from '../types';
 
 export const personalInfo: PersonalInfo = {
-  name: "Shiva Kumar Kothapally",
+  name: "Shiva Kumar",
   title: "Full Stack Developer",
   bio: "Passionate full-stack developer with expertise in modern web technologies. I love creating beautiful, functional, and user-friendly applications that solve real-world problems.",
   location: "Hyderabad, India",

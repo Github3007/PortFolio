@@ -72,7 +72,7 @@ Update your personal information in `src/data/index.ts`:
 
 ```typescript
 export const personalInfo: PersonalInfo = {
-  name: "Your Name",
+  name: "Shiva Kumar",
   title: "Your Title",
   bio: "Your bio...",
   // ... other fields
@@ -156,4 +156,4 @@ This project is licensed under the MIT License.
 
 ---
 
-Made with ❤️ by [Your Name](mailto:your.email@example.com)
+Made with ❤️ by [Shiva Kumar](mailto:shivakumarkothapally5@gmail.com)
