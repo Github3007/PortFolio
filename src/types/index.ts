@@ -38,6 +38,7 @@ export interface PersonalInfo {
   twitter?: string;
   resumeUrl?: string;
   profileImage?: string;
+  experienceStartDate?: string; // Format: YYYY-MM-DD
 }
 
 export interface HeaderProps {

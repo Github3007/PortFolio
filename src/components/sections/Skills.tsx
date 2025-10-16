@@ -12,7 +12,7 @@ const Skills = () => {
       >
         <div className="text-center">
           <div className="text-3xl mb-2">{skill.icon}</div>
-          <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{skill.name}</h3>
+          <h3 className="font-semibold text-gray-900 dark:text-white mb-2 text-xs sm:text-sm break-words">{skill.name}</h3>
           
           {/* Simple skill tag without rating */}
           <div className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded-full text-xs font-medium">

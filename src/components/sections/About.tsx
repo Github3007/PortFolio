@@ -2,6 +2,35 @@ import { motion } from 'framer-motion';
 import { personalInfo } from '../../data';
 
 const About = () => {
+  // Calculate dynamic experience
+  const calculateExperience = () => {
+    if (!personalInfo.experienceStartDate) return "0 months";
+    
+    const startDate = new Date(personalInfo.experienceStartDate);
+    const currentDate = new Date();
+    
+    const years = currentDate.getFullYear() - startDate.getFullYear();
+    const months = currentDate.getMonth() - startDate.getMonth();
+    
+    const totalMonths = years * 12 + months;
+    
+    if (totalMonths < 12) {
+      return `${totalMonths} ${totalMonths === 1 ? 'month' : 'months'}`;
+    } else {
+      const experienceYears = Math.floor(totalMonths / 12);
+      const remainingMonths = totalMonths % 12;
+      
+      if (remainingMonths === 0) {
+        return `${experienceYears} ${experienceYears === 1 ? 'year' : 'years'}`;
+      } else {
+        // Format: "1 year 1 month" or "2 years 3 months"
+        const yearText = experienceYears === 1 ? 'year' : 'years';
+        const monthText = remainingMonths === 1 ? 'month' : 'months';
+        return `${experienceYears} ${yearText} ${remainingMonths} ${monthText}`;
+      }
+    }
+  };
+
   const highlights = [
     "Focused on creating exceptional user experiences",
     "Passionate about cutting-edge technologies",
@@ -59,7 +88,7 @@ const About = () => {
                   whileHover={{ scale: 1.05 }}
                   className="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md text-center"
                 >
-                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">3 months</div>
+                  <div className="text-lg md:text-xl font-bold text-blue-600 dark:text-blue-400 leading-tight">{calculateExperience()}</div>
                   <div className="text-sm text-gray-600 dark:text-gray-300">Experience</div>
                 </motion.div>
                 <motion.div

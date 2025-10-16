@@ -10,7 +10,8 @@ const Header = ({ darkMode, toggleDarkMode, activeSection, setActiveSection }: H
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills & Experience' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'skills', label: 'Experience' },
     { id: 'projects', label: 'Projects' },
     { id: 'contact', label: 'Contact' }
   ];
@@ -44,42 +45,34 @@ const Header = ({ darkMode, toggleDarkMode, activeSection, setActiveSection }: H
           : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm'
       }`}
     >
-      <nav className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold gradient-text cursor-pointer"
-            onClick={() => scrollToSection('home')}
-          >
-            Portfolio
-          </motion.div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.id}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-medium transition-colors duration-200 ${
-                  activeSection === item.id
-                    ? 'text-blue-600 dark:text-blue-400'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
-                }`}
-              >
-                {item.label}
-              </motion.button>
-            ))}
-
+      <nav className="w-full px-4 py-4">
+        <div className="flex items-center w-full">
+          {/* Desktop Navigation - Full Width */}
+          <div className="hidden md:flex items-center justify-between w-full">
+            <div className="flex items-center gap-12 flex-1 justify-center">
+              {navItems.map((item, index) => (
+                <motion.button
+                  key={`${item.id}-${index}`}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`text-sm font-medium transition-colors duration-200 ${
+                    activeSection === item.id
+                      ? 'text-blue-600 dark:text-blue-400'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                  }`}
+                >
+                  {item.label}
+                </motion.button>
+              ))}
+            </div>
             {/* Dark Mode Toggle */}
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleDarkMode}
               aria-label="Toggle Dark Mode"
-              className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+              className="ml-8 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
             >
               {darkMode ? (
                 <FaSun className="text-yellow-400" />
@@ -129,9 +122,9 @@ const Header = ({ darkMode, toggleDarkMode, activeSection, setActiveSection }: H
             className="md:hidden mt-4 pb-4 border-t border-gray-200 dark:border-gray-700"
           >
             <div className="flex flex-col space-y-4 pt-4">
-              {navItems.map((item) => (
+              {navItems.map((item, index) => (
                 <button
-                  key={item.id}
+                  key={`${item.id}-${index}`}
                   onClick={() => scrollToSection(item.id)}
                   className={`text-left font-medium transition-colors duration-200 ${
                     activeSection === item.id

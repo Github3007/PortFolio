@@ -11,6 +11,7 @@ export const personalInfo: PersonalInfo = {
   github: "https://github.com/Github3007",
   twitter: "https://twitter.com/yourhandle",
   resumeUrl: "/resume.pdf",
+  experienceStartDate: "2025-07-23", // Format: YYYY-MM-DD (July 23, 2025)
 };
 
 export const skills: Skill[] = [
@@ -32,7 +33,7 @@ export const skills: Skill[] = [
   
   // Tools & Frameworks
   { name: "Spring Boot", level: 8, category: "backend", icon: "🌱" },
-  { name: "Spring Data JPA", level: 7, category: "backend", icon: "�" },
+  { name: "JPA", level: 7, category: "backend", icon: "💾" },
   
   // Databases
   { name: "MySQL", level: 7, category: "backend", icon: "🗄️" },
