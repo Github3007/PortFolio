@@ -3,7 +3,36 @@ import { experience } from '../../data';
 import { Experience as ExperienceType } from '../../types';
 
 const Experience = () => {
+  const calculateDuration = (startDate: string, endDate?: string) => {
+    const start = new Date(startDate);
+    const end = endDate ? new Date(endDate) : new Date();
+    const diffInMonths = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+    const years = Math.floor(diffInMonths / 12);
+    const months = diffInMonths % 12;
+
+    let durationStr = '';
+    if (years > 0) {
+      durationStr += `${years} yr${years > 1 ? 's' : ''} `;
+    }
+    if (months > 0) {
+      durationStr += `${months} mo${months > 1 ? 's' : ''}`;
+    }
+    if (diffInMonths === 0) {
+      return "1 mo";
+    }
+
+    return durationStr.trim();
+  };
+
+  const formatDate = (date: string) => {
+    return new Date(date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  };
+
   const ExperienceCard = ({ exp, index }: { exp: ExperienceType; index: number }) => {
+    const duration = calculateDuration(exp.startDate, exp.endDate);
+    const startDate = formatDate(exp.startDate);
+    const endDate = exp.endDate ? formatDate(exp.endDate) : 'Present';
+
     return (
       <motion.div
         initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
@@ -28,7 +57,7 @@ const Experience = () => {
                   {exp.position}
                 </h3>
                 <span className="text-sm text-blue-600 dark:text-blue-400 font-medium bg-blue-100 dark:bg-blue-900 px-3 py-1 rounded-full">
-                  {exp.duration}
+                  {`${startDate} - ${endDate} (${duration})`}
                 </span>
               </div>
               

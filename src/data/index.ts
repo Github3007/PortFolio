@@ -75,7 +75,7 @@ export const experience: Experience[] = [
     id: 1,
     company: "Cognizant Technology Solutions",
     position: "Software Engineer",
-    duration: "July 2025 - Present (3 months)",
+    startDate: "2025-07-23",
     location: "Hyderabad, India",
     description: [
       "Working as a Software Engineer with 0-1 year experience in Java development",
@@ -93,7 +93,8 @@ export const experience: Experience[] = [
     id: 2,
     company: "Cognizant Technology Solutions",
     position: "Full Stack Developer Intern – E-commerce Domain",
-    duration: "March 2025 - June 2025",
+    startDate: "2025-03-01",
+    endDate: "2025-06-30",
     location: "Chennai, India",
     description: [
       "Developed an E-commerce platform for 5,000+ users using Java, Spring Boot, and ReactJS, collaborating in an agile team of 5",

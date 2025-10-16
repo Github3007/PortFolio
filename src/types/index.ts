@@ -20,7 +20,8 @@ export interface Experience {
   id: number;
   company: string;
   position: string;
-  duration: string;
+  startDate: string; // Format: YYYY-MM-DD
+  endDate?: string; // Format: YYYY-MM-DD, optional for current job
   description: string[];
   technologies: string[];
   location: string;
