@@ -34,4 +34,4 @@ src/
 
 ---
 
-Made with ❤️ by [Shiva Kumar](mailto:shivakumarkothapally5@gmail.com)
+Made with ❤️ by [Shiva Kumar Kothapally](mailto:shivakumarkothapally5@gmail.com)
