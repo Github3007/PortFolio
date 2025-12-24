@@ -23,12 +23,45 @@ const Experience = () => {
           >
             {/* Header */}
             <div className="mb-4">
-              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center justify-between mb-2">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                   {exp.position}
                 </h3>
+                {/* Compute dynamic duration from startDate/endDate when available */}
                 <span className="text-sm text-blue-600 dark:text-blue-400 font-medium bg-blue-100 dark:bg-blue-900 px-3 py-1 rounded-full">
-                  {exp.duration}
+                  {(() => {
+                    try {
+                      if (exp.startDate) {
+                        const start = new Date(exp.startDate);
+                        const end = exp.endDate ? new Date(exp.endDate) : new Date();
+
+                        if (!isNaN(start.getTime()) && !isNaN(end.getTime())) {
+                          // count completed full months between start and end
+                          let totalMonths = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+                          // subtract one month if end day is before start day (not a full month yet)
+                          if (end.getDate() < start.getDate()) totalMonths -= 1;
+                          if (totalMonths < 0) totalMonths = 0;
+
+                          const startLabel = start.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+                          const endLabel = exp.endDate ? new Date(exp.endDate).toLocaleString('en-US', { month: 'long', year: 'numeric' }) : 'Present';
+
+                          if (totalMonths < 12) {
+                            return `${startLabel} - ${endLabel} (${totalMonths} ${totalMonths === 1 ? 'month' : 'months'})`;
+                          }
+
+                          const years = Math.floor(totalMonths / 12);
+                          const months = totalMonths % 12;
+                          if (months === 0) {
+                            return `${startLabel} - ${endLabel} (${years} ${years === 1 ? 'year' : 'years'})`;
+                          }
+                          return `${startLabel} - ${endLabel} (${years} ${years === 1 ? 'year' : 'years'} ${months} ${months === 1 ? 'month' : 'months'})`;
+                        }
+                      }
+                    } catch (e) {
+                      // fallthrough
+                    }
+                    return exp.duration;
+                  })()}
                 </span>
               </div>
               

@@ -21,6 +21,8 @@ export interface Experience {
   company: string;
   position: string;
   duration: string;
+  startDate?: string; // YYYY-MM-DD
+  endDate?: string | null; // YYYY-MM-DD or null for Present
   description: string[];
   technologies: string[];
   location: string;
